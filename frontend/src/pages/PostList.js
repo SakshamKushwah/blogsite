@@ -49,7 +49,7 @@ export default function PostList() {
       <h2 className="page-title">📚 Latest Blog Posts</h2>
 
       <div className="post-grid">
-        {posts.length === 0 && <p>No posts available.</p>}
+        {posts.length === 0 && <p>No posts available</p>}
 
         {posts.map((p) => (
           <div
