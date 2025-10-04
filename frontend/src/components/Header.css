@@ -1,0 +1,116 @@
+/* ====== NAVBAR ====== */
+.navbar {
+  background: linear-gradient(90deg, #4f46e5, #6d28d9);
+  color: #fff;
+  padding: 15px 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ====== LOGO ====== */
+.nav-logo a {
+  font-size: 1.7rem;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: color 0.3s;
+}
+
+.nav-logo a:hover {
+  color: #ffd700;
+}
+
+/* ====== NAV LINKS ====== */
+.nav-links {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
+  color: #f1f1f1;
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: 500;
+  transition: color 0.3s, transform 0.2s;
+}
+
+.nav-links a:hover {
+  color: #ffeb3b;
+  transform: translateY(-2px);
+}
+
+/* ====== AUTH SECTION ====== */
+.nav-auth {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.user-info {
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 6px 12px;
+  border-radius: 8px;
+}
+
+.user-info .role {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* ====== BUTTONS ====== */
+.logout-btn {
+  background: #ff5252;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.logout-btn:hover {
+  background: #e53935;
+  transform: scale(1.05);
+}
+
+.auth-link {
+  background: #22c55e;
+  padding: 8px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.auth-link:hover {
+  background: #16a34a;
+  transform: scale(1.05);
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px 20px;
+  }
+
+  .nav-links {
+    margin: 10px 0;
+    gap: 15px;
+  }
+
+  .nav-auth {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
