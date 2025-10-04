@@ -7,18 +7,24 @@ const path = require('path');
 const app = express();
 connectDB();
 
-app.use(cors());
+// CORS: allow your frontend
+app.use(cors({
+  origin: 'https://blogsite-iipw.vercel.app',
+  credentials: true
+}));
+
 app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
+// API routes
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/posts', require('./routes/posts'));
 
+// Error handler
 app.use((err, req, res, next) => {
   console.error("SERVER ERROR:", err);
   res.status(500).json({ message: err.message, stack: err.stack });
 });
 
-
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running ${PORT}`));
+app.listen(PORT, () => console.log(`Server running on ${PORT}`));
