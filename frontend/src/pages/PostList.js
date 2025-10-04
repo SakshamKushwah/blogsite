@@ -60,7 +60,7 @@ export default function PostList() {
             {p.imageUrl && (
               <img
                 className="post-card-img"
-                src={`blogsite-back.vercel.app${p.imageUrl.replace(/^\/+/, "")}`}
+                src={`https://blogsite-back.vercel.app/${p.imageUrl.replace(/^\/+/, "")}`}
                 alt={p.title}
               />
             )}
@@ -90,7 +90,7 @@ export default function PostList() {
             {selectedPost.imageUrl && (
               <img
                 className={`modal-img ${selectedPost.imageAlignment || "left"}`}
-                src={`blogsite-back.vercel.app${selectedPost.imageUrl.replace(/^\/+/, "")}`}
+                src={`https://blogsite-back.vercel.app/p${selectedPost.imageUrl.replace(/^\/+/, "")}`}
                 alt={selectedPost.title}
               />
             )}
