@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: 'https://blogsite-back.vercel.app', // Removed trailing slash
+  baseURL: 'https://backend-blog-h5cb.onrender.com', // Removed trailing slash
 });
 
 API.interceptors.request.use((config) => {
