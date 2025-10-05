@@ -13,7 +13,7 @@ export default function PostList() {
 
   const fetchPosts = async () => {
     try {
-      const res = await API.get("/posts");
+  const res = await API.get("/api/posts");
       setPosts(res.data);
     } catch (err) {
       console.error(err);
@@ -23,7 +23,7 @@ export default function PostList() {
   const updateAlignment = async (alignment) => {
     if (!selectedPost) return;
     try {
-      const res = await API.patch(`/posts/${selectedPost._id}`, { imageAlignment: alignment });
+  const res = await API.patch(`/api/posts/${selectedPost._id}`, { imageAlignment: alignment });
       setPosts(posts.map(p => (p._id === selectedPost._id ? res.data : p)));
       setSelectedPost(res.data);
     } catch (err) {
@@ -35,7 +35,7 @@ export default function PostList() {
   const deletePost = async (id) => {
     if (!window.confirm("Are you sure you want to delete this post?")) return;
     try {
-      await API.delete(`/posts/${id}`);
+  await API.delete(`/api/posts/${id}`);
       setPosts(posts.filter(p => p._id !== id));
       setSelectedPost(null);
     } catch (err) {

@@ -6,13 +6,13 @@ export default function AdminDashboard(){
   const user = JSON.parse(localStorage.getItem('user') || 'null');
 
   useEffect(()=> {
-    API.get('/posts').then(res => setPosts(res.data)).catch(console.error);
+  API.get('/api/posts').then(res => setPosts(res.data)).catch(console.error);
   }, []);
 
   const del = async (id) => {
     if (!window.confirm('Delete post?')) return;
     try {
-      await API.delete(`/posts/${id}`);
+  await API.delete(`/api/posts/${id}`);
       setPosts(p => p.filter(x => x._id !== id));
     } catch (err) { alert('Delete failed'); }
   };
