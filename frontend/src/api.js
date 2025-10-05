@@ -1,15 +1,12 @@
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: "https://blogsite-9nr5-b.vercel.app", // ✅ removed trailing slash
+  baseURL: 'https://blogsite-9nr5-b.vercel.app', // ✅ Deployed backend
 });
 
-// ✅ Attach token to every request if available
 API.interceptors.request.use((config) => {
   const token = localStorage.getItem('token');
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
-  }
+  if (token) config.headers.Authorization = `Bearer ${token}`;
   return config;
 });
 
