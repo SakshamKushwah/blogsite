@@ -9,7 +9,7 @@ connectDB();
 
 // ✅ CORS: Allow localhost for now (dev mode)
 app.use(cors({
-  origin: 'http://localhost:3000,https://blogsite-qoyx-saksham.vercel.app', // 👈 Only allow React dev server
+  origin: 'http://localhost:3000,https://blogsite-qoyx-saksham.vercel.app,https://blogsite-u93c.vercel.app/', // 👈 Only allow React dev server
   credentials: true
 }));
 
