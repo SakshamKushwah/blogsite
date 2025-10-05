@@ -60,7 +60,7 @@ export default function PostList() {
             {p.imageUrl && (
               <img
                 className="post-card-img"
-                src={`https://blogsite-9nr5-b.vercel.app/${p.imageUrl.replace(/^\/+/, "")}`}
+                src={`https://backend-blog-h5cb.onrender.com/${p.imageUrl.replace(/^\/+/, "")}`}
                 alt={p.title}
               />
             )}
@@ -90,7 +90,7 @@ export default function PostList() {
             {selectedPost.imageUrl && (
               <img
                 className={`modal-img ${selectedPost.imageAlignment || "left"}`}
-                src={`https://blogsite-9nr5-b.vercel.app/${selectedPost.imageUrl.replace(/^\/+/, "")}`}
+                src={`https://backend-blog-h5cb.onrender.com/${selectedPost.imageUrl.replace(/^\/+/, "")}`}
                 alt={selectedPost.title}
               />
             )}
