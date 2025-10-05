@@ -95,7 +95,7 @@ export default function PostList() {
               />
             )}
 
-            {(user?.role === "admin" || user?._id === selectedPost.author?._id) &&
+            {/* {(user?.role === "admin" || user?._id === selectedPost.author?._id) &&
               selectedPost.imageUrl && (
                 <div className="alignment-controls">
                   <p>🖼 Change Image Alignment:</p>
@@ -103,7 +103,7 @@ export default function PostList() {
                   <button onClick={() => updateAlignment("center")}>Center</button>
                   <button onClick={() => updateAlignment("right")}>Right</button>
                 </div>
-              )}
+              )} */}
 
             {(user?.role === "admin" || user?._id === selectedPost.author?._id) && (
               <button className="delete-btn" onClick={() => deletePost(selectedPost._id)}>
