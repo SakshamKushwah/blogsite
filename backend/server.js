@@ -16,7 +16,7 @@ connectDB();
 const corsOptions = {
   origin: [
     "http://localhost:3000",
-    "https://blogsite-u93c.vercel.app/"
+    "https://blogsite-u93c.vercel.app"
   ],
   credentials: true,
 };
