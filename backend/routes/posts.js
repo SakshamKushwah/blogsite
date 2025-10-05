@@ -69,4 +69,30 @@ router.delete('/:id', auth, async (req, res) => {
   }
 });
 
+// update image alignment (admin or post author)
+router.patch('/:id/alignment', auth, async (req, res) => {
+  try {
+    const { imageAlignment } = req.body;
+    if (!imageAlignment || !['left', 'center', 'right'].includes(imageAlignment)) {
+      return res.status(400).json({ msg: 'Invalid alignment value' });
+    }
+
+    const post = await Post.findById(req.params.id);
+    if (!post) return res.status(404).json({ msg: 'Post not found' });
+
+    // allow admin or author
+    if (req.user.role !== 'admin' && post.author.toString() !== req.user._id.toString()) {
+      return res.status(403).json({ msg: 'Not authorized' });
+    }
+
+    post.imageAlignment = imageAlignment;
+    await post.save();
+
+    res.json(post); // return updated post
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server error');
+  }
+});
+
 module.exports = router;
