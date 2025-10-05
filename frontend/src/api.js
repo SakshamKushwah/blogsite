@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: "https://blogsite-back.vercel.app", // ✅ removed trailing slash
+  baseURL: "https://blogsite-9nr5-b.vercel.app", // ✅ removed trailing slash
 });
 
 // ✅ Attach token to every request if available
