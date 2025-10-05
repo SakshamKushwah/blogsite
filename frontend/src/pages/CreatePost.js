@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import API from '../api';
 import { useNavigate } from 'react-router-dom';
-import './CreatePost.css'; // Import the CSS
+import './CreatePost.css';
 
 export default function CreatePost() {
   const nav = useNavigate();
@@ -10,9 +10,11 @@ export default function CreatePost() {
   const [content, setContent] = useState('');
   const [alignment, setAlignment] = useState('left');
   const [imageFile, setImageFile] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const submit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
       const formData = new FormData();
@@ -22,34 +24,38 @@ export default function CreatePost() {
       formData.append('imageAlignment', alignment);
       if (imageFile) formData.append('image', imageFile);
 
-      // Make sure your backend route '/posts' accepts multipart/form-data
-      await API.post('/posts', formData, {
+      // ✅ FIXED: Correct backend route
+      await API.post('/api/posts', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
+        withCredentials: true, // optional if you're using cookies or auth
       });
 
-      // Reset form or navigate
+      alert('✅ Post created successfully!');
       nav('/');
     } catch (err) {
       console.error(err);
-      alert(err.response?.data?.msg || 'Error creating post');
+      alert(err.response?.data?.message || '❌ Error creating post');
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div className="create-post-container">
       <h2>Create Your Post</h2>
+
       <form onSubmit={submit} className="create-post-form">
         <label>Title *</label>
         <input
           type="text"
           value={title}
-          onChange={e => setTitle(e.target.value)}
+          onChange={(e) => setTitle(e.target.value)}
           required
           maxLength={100}
         />
 
         <label>Category</label>
-        <select value={category} onChange={e => setCategory(e.target.value)}>
+        <select value={category} onChange={(e) => setCategory(e.target.value)}>
           <option value="">Select a category</option>
           <option value="Technology">Technology</option>
           <option value="Lifestyle">Lifestyle</option>
@@ -59,7 +65,7 @@ export default function CreatePost() {
         <label>Content *</label>
         <textarea
           value={content}
-          onChange={e => setContent(e.target.value)}
+          onChange={(e) => setContent(e.target.value)}
           rows={10}
           required
         ></textarea>
@@ -68,7 +74,7 @@ export default function CreatePost() {
         <input
           type="file"
           accept="image/*"
-          onChange={e => setImageFile(e.target.files[0])}
+          onChange={(e) => setImageFile(e.target.files[0])}
         />
 
         <label>Image Alignment</label>
@@ -105,7 +111,9 @@ export default function CreatePost() {
           </label>
         </div>
 
-        <button type="submit">Publish</button>
+        <button type="submit" disabled={loading}>
+          {loading ? 'Publishing...' : 'Publish'}
+        </button>
       </form>
     </div>
   );
